@@ -1,19 +1,15 @@
-'use strict'; //  enable strict mode
-
-function foo() {
-  console.log('foo', this); //  doesn't bind to the execution context, hence undefined
-}
-
-foo();
-
-let bar = function () {
-  console.log('bar', this); //  doesn't bind to the execution context, hence undefined
+const book = {
+  title: 'JavaScript the Good Parts',
+  read: function () {
+    console.log(`Title: ${this.title}`);
+  },
 };
 
-bar();
+//  if read() is called on book, this refers to the book
+book.read();
 
-//  Arrow functions do not bind to the this of the enclosing context
+//  if read() is called independently, this refers to the global object
+//  hence this.title is undefined
 
-let baz = () => console.log('baz', this); //  doesn't bind to global this, but gets its own empty object
-
-baz();
+const readFunction = book.read; //  this is assignment
+readFunction();
