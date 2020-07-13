@@ -1,38 +1,60 @@
-//  Concept of class is a syntactic sugar over constructor functions
-
 class Vehicle {
-  //  constructor is a special named function
-  constructor() {
+  constructor(name) {
     //  instance fields are set using this.x
-    this.name = 'Default Name';
+    this.name = name;
   }
 
-  //  methods do not have function keyword
   drive() {
     console.log(`${this.name} is driving`);
   }
+}
 
-  //  getter is an executing block that returns some value
-  //  but accesed as a read-only field. Cannot call vehicleName();
-  get vehicleName() {
-    console.log('----> getter is executing');
-    return this.name;
+class Truck extends Vehicle {
+  constructor(name, year) {
+    //  it is mandatory to call super-class constructor
+    super(name);
+    this.year = year;
   }
 
-  //  setter is an executing block that sets value to instance
-  //  field as if it is a property. Cannot call vehicleName('name');
-  set vehicleName(newName) {
-    console.log('----> setter is executing');
-    this.name = newName;
+  drive() {
+    console.log(`${this.name} of year ${this.year} is driving`);
+  }
+
+  honk() {
+    console.log(`${this.name} of year ${this.year} is honking`);
   }
 }
 
-//  instantiation is same as other object-oriented languages
+const v = new Vehicle('Volvo');
+v.drive();
 
-const truck = new Vehicle();
-truck.drive();
-console.log(`Truck name before change: ${truck.vehicleName}`);
+const t = new Truck('Leyland', 2020);
+t.drive();
+t.honk();
 
-truck.vehicleName = 'Volvo';
-console.log(`Truck name after change: ${truck.vehicleName}`);
-truck.drive();
+//  typeof and instanceof operators
+console.log(
+  `Type of v: ${typeof v}, v is instance of ${
+    v instanceof Vehicle ? 'Vehicle' : '?'
+  }`
+);
+
+console.log(
+  `Type of t: ${typeof t}, t is instance of ${
+    t instanceof Truck ? 'Truck' : '?'
+  }`
+);
+
+//  t is also the instance of Vehicle (polymorphism)
+console.log(
+  `Type of t: ${typeof t}, t is instance of ${
+    t instanceof Vehicle ? 'Vehicle' : '?'
+  }`
+);
+
+//  but v is not the instance of Truck
+console.log(
+  `Type of v: ${typeof v}, v is instance of ${
+    v instanceof Truck ? 'Truck' : '?'
+  }`
+);
