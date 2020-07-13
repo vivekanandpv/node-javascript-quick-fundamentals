@@ -1,21 +1,21 @@
-//  JavaScript's type model is called dynamic typing
-//  We do have types, but the variable can change the type
-//  during the program
+//  In JavaScript there are three main ways to define a function
 
-let i = 100; //  type is number
-console.log(`Value of i is ${i}, and type is ${typeof i}`);
+//  1. function declaration
+function namedFoo() {
+  console.log('namedFoo is called');
+}
 
-i = 'Hello there!'; //  type is string
-console.log(`Value of i is ${i}, and type is ${typeof i}`);
+//  2. function expression
+//  Here we assign an anonymous function to a variable
+let expressionFoo = function () {
+  console.log('expressionFoo is called');
+};
 
-i = false; //  type is boolean
-console.log(`Value of i is ${i}, and type is ${typeof i}`);
+//  3. arrow function expression (lambda expression)
+//  This is only available since ES6
+let arrowFoo = () => console.log('arrowFoo is called');
 
-i = function () {}; //  type is function
-console.log(`Value of i is ${i}, and type is ${typeof i}`);
-
-i = {}; //  type is object
-console.log(`Value of i is ${i}, and type is ${typeof i}`);
-
-i = Symbol({ name: 'Vikram' }); //  type is symbol
-console.log('Value of i is', i, `and type is ${typeof i}`);
+//  Calling each of these functions is the same
+namedFoo();
+expressionFoo();
+arrowFoo();
