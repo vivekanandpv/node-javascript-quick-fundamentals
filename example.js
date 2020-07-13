@@ -1,15 +1,13 @@
-//  Under normal circumstances
-//  function declaration or function expression
-//  with function keyword binds to the this of the context
+'use strict'; //  enable strict mode
 
 function foo() {
-  console.log('foo', this); //  binds to global this (node global object, or window object in browser)
+  console.log('foo', this); //  doesn't bind to the execution context, hence undefined
 }
 
 foo();
 
 let bar = function () {
-  console.log('bar', this); //  binds to global this (node global object, or window object in browser)
+  console.log('bar', this); //  doesn't bind to the execution context, hence undefined
 };
 
 bar();
