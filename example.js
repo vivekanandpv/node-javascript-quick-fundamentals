@@ -1,40 +1,36 @@
-//  In its simple form, an object in JavaScript is
-//  a set of key-value pairs. Keys are called as properties.
-//  Each property has to be unique. Value can be of any type,
-//  including another object (nested object), or an array,
-//  or any combination thereof.
+//  A pure function always returns the same output for same input
+//  It is stateless, meaning it doesn't keep a memory of variables.
+//  It doesn't produce side-effects (somewhere else)
+//  More info: https://en.wikipedia.org/wiki/Pure_function
 
-//  An example
+let i = 0;
 
-let book = {
-  title: 'Anna Karenina',
-  year: 1878,
-  author: {
-    firstName: 'Leo',
-    lastName: 'Tolstoy',
-    country: 'Russia',
-  },
-  translatedTo: ['English', 'French', 'German'],
-  isAvailable: true,
-  order: function () {
-    console.log('Order taken for Anna Karenina');
-  },
-};
+//  square() only depends on input parameter and constants
+//  It doesn't change or call anything else
+//  So it is a pure function
+function square(param) {
+  return param * param;
+}
 
-//  Properties are accessed via dot operator
-console.log(`author first name: ${book.author.firstName}`);
+//  foo() doesn't depend only on param
+//  Also, it changes external variable i
+//  This is not a pure function
+function foo(param) {
+  ++i;
+  return param * i;
+}
 
-//  Function on the object can be invoked using dot operator
-book.order();
+//  Calling square with same input,
+//  say 3 always gives the same result 9
+console.log(`square(3): ${square(3)}`);
+console.log(`square(3): ${square(3)}`);
+console.log(`square(3): ${square(3)}`);
+console.log(`square(3): ${square(3)}`);
 
-//  Properties can also be accessed using subscript operator
-console.log(`title: ${book['title']}`);
-book['order']();
-
-//  A new property can be added on the fly
-book.language = 'Russian';
-console.log(`language: ${book.language}`);
-
-//  An existing property can be deleted on the fly
-delete book.year;
-console.log('Book after deleting year property', book);
+//  On the other hand, calling foo with same input,
+//  say 3 doesn't always give the same result
+console.log(`foo(3): ${foo(3)}`);
+console.log(`foo(3): ${foo(3)}`);
+console.log(`foo(3): ${foo(3)}`);
+console.log(`foo(3): ${foo(3)}`);
+console.log(`foo(3): ${foo(3)}`);
