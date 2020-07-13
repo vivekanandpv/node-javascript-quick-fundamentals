@@ -1,16 +1,21 @@
-//  A constant cannot be reassigned
-const i = 100;
+//  Under normal circumstances
+//  function declaration or function expression
+//  with function keyword binds to the this of the context
 
-// i = 200; //  TypeError: Assignment to constant variable.
+function foo() {
+  console.log('foo', this); //  binds to global this (node global object, or window object in browser)
+}
 
-//  Please note const is not a guard against mutation
+foo();
 
-const book = {
-  title: 'Crime and Punishment',
+let bar = function () {
+  console.log('bar', this); //  binds to global this (node global object, or window object in browser)
 };
 
-console.log(`Title before mutation: ${book.title}`);
+bar();
 
-book.title = 'The Brothers Karamazov'; //  mutation is allowed
+//  Arrow functions do not bind to the this of the enclosing context
 
-console.log(`Title after mutation: ${book.title}`);
+let baz = () => console.log('baz', this); //  doesn't bind to global this, but gets its own empty object
+
+baz();
