@@ -1,15 +1,9 @@
-//  In JavaScript, absence of value is indicated by
-//  two special entities: undefined and null
+//  In JavaScript, these are considered to be falsy:
+//      null, undefined, 0, '', false, NaN
+//  More info: https://developer.mozilla.org/en-US/docs/Glossary/Falsy
 
-let i; //  no initialization; undefined
-console.log(`Type of i is ${typeof i}`);
-
-//  Curiously, the type of undefined is also undefined!
-//  This means, undefined is both a value as well as a type
-//  More info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined
-console.log(`Type of undefined is ${typeof undefined}`);
-
-//  null has to be specifically assigned
-//  null is of type object
-let j = null;
-console.log(`Value of j is ${j}, Type of j is ${typeof j}`);
+console.log(`null is: ${null ? 'truthy' : 'falsy'}`);
+console.log(`undefined is: ${undefined ? 'truthy' : 'falsy'}`);
+console.log(`0 is: ${0 ? 'truthy' : 'falsy'}`);
+console.log(`empty string is: ${'' ? 'truthy' : 'falsy'}`);
+console.log(`NaN is: ${NaN ? 'truthy' : 'falsy'}`);
