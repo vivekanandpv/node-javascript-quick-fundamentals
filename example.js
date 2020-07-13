@@ -1,17 +1,15 @@
-//  In JavaScript, it is possible to call a function
-//  with too many or too few arguments
-//  Extra arguments are ignored, and unsupplied arguments
-//  default to undefined
+//  In JavaScript, absence of value is indicated by
+//  two special entities: undefined and null
 
-function foo(a, b, c) {
-  console.log(`foo is called with ${a}, ${b}, ${c}`);
-}
+let i; //  no initialization; undefined
+console.log(`Type of i is ${typeof i}`);
 
-//  With exact arguments
-foo('Hello', 123, true);
+//  Curiously, the type of undefined is also undefined!
+//  This means, undefined is both a value as well as a type
+//  More info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined
+console.log(`Type of undefined is ${typeof undefined}`);
 
-//  With too many arguments
-foo(1, 3.14, false, 'How are you?', () => console.log('Arrow!'));
-
-//  With too few arguments
-foo();
+//  null has to be specifically assigned
+//  null is of type object
+let j = null;
+console.log(`Value of j is ${j}, Type of j is ${typeof j}`);
