@@ -1,21 +1,17 @@
-//  In JavaScript there are three main ways to define a function
+//  In JavaScript, it is possible to call a function
+//  with too many or too few arguments
+//  Extra arguments are ignored, and unsupplied arguments
+//  default to undefined
 
-//  1. function declaration
-function namedFoo() {
-  console.log('namedFoo is called');
+function foo(a, b, c) {
+  console.log(`foo is called with ${a}, ${b}, ${c}`);
 }
 
-//  2. function expression
-//  Here we assign an anonymous function to a variable
-let expressionFoo = function () {
-  console.log('expressionFoo is called');
-};
+//  With exact arguments
+foo('Hello', 123, true);
 
-//  3. arrow function expression (lambda expression)
-//  This is only available since ES6
-let arrowFoo = () => console.log('arrowFoo is called');
+//  With too many arguments
+foo(1, 3.14, false, 'How are you?', () => console.log('Arrow!'));
 
-//  Calling each of these functions is the same
-namedFoo();
-expressionFoo();
-arrowFoo();
+//  With too few arguments
+foo();
