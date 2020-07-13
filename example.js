@@ -1,60 +1,33 @@
-class Vehicle {
-  constructor(name) {
-    //  instance fields are set using this.x
-    this.name = name;
-  }
+//  ... is called either spread or rest operator
+//  More info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 
-  drive() {
-    console.log(`${this.name} is driving`);
-  }
+//  as rest operator
+
+function foo(...names) {
+  //  names is now an array
+  names.forEach((n) => {
+    console.log(`foo(): name: ${n}`);
+  });
 }
 
-class Truck extends Vehicle {
-  constructor(name, year) {
-    //  it is mandatory to call super-class constructor
-    super(name);
-    this.year = year;
-  }
+foo('Ajay', 'Varun', 'Jacob', 'Harini', 'Harry');
 
-  drive() {
-    console.log(`${this.name} of year ${this.year} is driving`);
-  }
+//  as spread operator
+const cities = ['Bengaluru', 'New Delhi', 'London'];
 
-  honk() {
-    console.log(`${this.name} of year ${this.year} is honking`);
-  }
-}
+const moreCities = [...cities, 'Mumbai', 'Chennai', 'Tokyo', 'Madrid'];
 
-const v = new Vehicle('Volvo');
-v.drive();
+console.log(`moreCities: ${moreCities}`);
 
-const t = new Truck('Leyland', 2020);
-t.drive();
-t.honk();
+const vehicle = {
+  name: 'Default',
+  fuel: 'Petrol',
+};
 
-//  typeof and instanceof operators
-console.log(
-  `Type of v: ${typeof v}, v is instance of ${
-    v instanceof Vehicle ? 'Vehicle' : '?'
-  }`
-);
+const car = {
+  ...vehicle,
+  make: 'Maruti',
+  year: 2019,
+};
 
-console.log(
-  `Type of t: ${typeof t}, t is instance of ${
-    t instanceof Truck ? 'Truck' : '?'
-  }`
-);
-
-//  t is also the instance of Vehicle (polymorphism)
-console.log(
-  `Type of t: ${typeof t}, t is instance of ${
-    t instanceof Vehicle ? 'Vehicle' : '?'
-  }`
-);
-
-//  but v is not the instance of Truck
-console.log(
-  `Type of v: ${typeof v}, v is instance of ${
-    v instanceof Truck ? 'Truck' : '?'
-  }`
-);
+console.log('car', car);
