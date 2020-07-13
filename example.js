@@ -1,19 +1,16 @@
-//  When a higher order function (say foo) returns a function
-//  this return function closes over the local variables
-//  declared in the foo() scope. The return function
-//  has the access to these varialbes, even after foo() is out of scope
+//  A constant cannot be reassigned
+const i = 100;
 
-function closureEnclosureFunction() {
-  let counter = 0;
-  return function () {
-    ++counter;
-    console.log(`Current counter is: ${counter}`);
-  };
-}
+// i = 200; //  TypeError: Assignment to constant variable.
 
-let returnFunction = closureEnclosureFunction(); //  here, closureEnclosureFunction is out of scope
+//  Please note const is not a guard against mutation
 
-returnFunction(); //  counter 1
-returnFunction(); //  counter 2
-returnFunction(); //  counter 3
-returnFunction(); //  counter 4
+const book = {
+  title: 'Crime and Punishment',
+};
+
+console.log(`Title before mutation: ${book.title}`);
+
+book.title = 'The Brothers Karamazov'; //  mutation is allowed
+
+console.log(`Title after mutation: ${book.title}`);
